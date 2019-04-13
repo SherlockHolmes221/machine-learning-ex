@@ -1,4 +1,4 @@
-%% Machine Learning Online Class
+﻿%% Machine Learning Online Class
 %  Exercise 1: Linear regression with multiple variables
 %
 %  Instructions
@@ -104,12 +104,16 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
 
+X_predict =[1650 3];
+[X_predict mu_predict sigma_predict] = featureNormalize(X_predict);
 
-% ============================================================
+% Add intercept term to X
+X_predict = [1 X_predict];
+price = X_predict * theta
+%===============
 
-fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
+fprintf(['price of a 1650 sq-ft, 3 br house ' ...
          '(using gradient descent):\n $%f\n'], price);
 
 fprintf('Program paused. Press enter to continue.\n');
@@ -149,9 +153,8 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
-
-
+X_predict =[1 1650 3];
+price = X_predict* theta;
 % ============================================================
 
 fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
